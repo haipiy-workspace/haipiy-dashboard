@@ -10,6 +10,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@emotion/cache": "^11.13.0",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.4",
+    "@mui/material-nextjs": "^5.16.4",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
@@ -23,6 +28,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
