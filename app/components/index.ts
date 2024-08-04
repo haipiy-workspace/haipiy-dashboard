@@ -1,4 +1,5 @@
 import Button from "./Button";
+import TextInput from "./TextInput";
+import MuiIcons from "./MuiIcons";
 
-// eslint-disable-next-line import/prefer-default-export
-export { Button };
+export { Button, TextInput, MuiIcons };
