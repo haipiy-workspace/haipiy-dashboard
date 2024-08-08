@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/domain/shared/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import MuiThemeProvider from "./configs/muiThemeProvider";
+import MuiThemeProvider from "@/domain/shared/configs/muiThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
