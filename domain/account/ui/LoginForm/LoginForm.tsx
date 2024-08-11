@@ -1,6 +1,4 @@
-import { Button, TextInput } from "@/domain/shared/ui";
-import Image from "next/image";
-import Logo from "@/domain/shared/assets/icons/logo.svg";
+import { Button, Icon, TextInput } from "@/domain/shared/ui";
 
 const LoginForm = () => (
   <div className="flex flex-col gap-4 p-[18px]">
@@ -11,13 +9,7 @@ const LoginForm = () => (
     <Button className="w-full" variant="outline">
       Register
     </Button>
-    <Image
-      className="self-center"
-      src={Logo}
-      alt="Haipiy Logo"
-      width={124}
-      height={45.68}
-    />
+    <Icon name="haipiy" className="h-[45.68] w-[124px] self-center" />
   </div>
 );
 

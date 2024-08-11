@@ -1,8 +1,8 @@
 import MTextField from "@mui/material/TextField";
 import MInputAdornment from "@mui/material/InputAdornment";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
-import MuiIcons from "../MuiIcons";
-import { MuiIconsProps } from "../MuiIcons/MuiIcons";
+import Icon from "../Icon";
+import { IIconProps } from "../Icon/Icon";
 
 interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   variant?: "filled" | "standard" | "outlined";
@@ -17,8 +17,8 @@ interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   value?: string;
   required?: boolean;
   showPassword?: boolean;
-  iconStart?: MuiIconsProps["name"];
-  iconEnd?: MuiIconsProps["name"];
+  iconStart?: IIconProps["name"];
+  iconEnd?: IIconProps["name"];
 }
 
 const getRootClass = (startIcon: Boolean, endIcon: Boolean): string => {
@@ -72,12 +72,12 @@ const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
           },
           startAdornment: iconStart ? (
             <MInputAdornment position="start">
-              <MuiIcons name={iconStart} />
+              <Icon name={iconStart} />
             </MInputAdornment>
           ) : null,
           endAdornment: iconEnd ? (
             <MInputAdornment position="end">
-              <MuiIcons name={iconEnd} />
+              <Icon name={iconEnd} />
             </MInputAdornment>
           ) : null,
         }}
