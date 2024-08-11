@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "@/domain/shared/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import MuiThemeProvider from "@/domain/shared/configs/muiThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  style: "normal",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body id="__next" className={inter.className}>
+      <body id="__next" className={poppins.className}>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <MuiThemeProvider>{children}</MuiThemeProvider>
         </AppRouterCacheProvider>

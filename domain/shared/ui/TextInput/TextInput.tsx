@@ -57,7 +57,10 @@ const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
     ref,
   ) => (
     <div className="flex w-full flex-col gap-2">
-      <span>{label}</span>
+      <p>
+        {label}
+        {required && <span className="ml-1 text-red-800">*</span>}
+      </p>
       <MTextField
         fullWidth
         type={showPassword ? type : "password"}
