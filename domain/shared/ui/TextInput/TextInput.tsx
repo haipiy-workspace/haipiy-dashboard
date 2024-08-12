@@ -1,8 +1,7 @@
 import MTextField from "@mui/material/TextField";
 import MInputAdornment from "@mui/material/InputAdornment";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
-import Icon from "../Icon";
-import { IIconProps } from "../Icon/Icon";
+import { Icon, IIconProps } from "../Icon";
 
 interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   variant?: "filled" | "standard" | "outlined";
@@ -33,7 +32,7 @@ const getInputClass = (startIcon: Boolean, endIcon: Boolean): string => {
   return "px-4";
 };
 
-const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
+export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
   (
     {
       variant = "outlined",

@@ -3,13 +3,13 @@
 import { Poppins } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
-const poppins = Poppins({
+export const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   style: "normal",
 });
 
-const theme = createTheme({
+export const theme = createTheme({
   typography: {
     fontFamily: poppins.style.fontFamily,
     allVariants: {

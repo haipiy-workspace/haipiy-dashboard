@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "@/domain/shared/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import MuiThemeProvider from "@/domain/shared/configs/muiThemeProvider";
+import { MuiThemeProvider } from "@/domain/shared/configs";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],

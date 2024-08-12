@@ -5,7 +5,7 @@ interface ILayoutProps {
   className?: string;
 }
 
-const Layout = ({ children, className }: ILayoutProps) => (
+export const Layout = ({ children, className }: ILayoutProps) => (
   <div className={`grid h-screen grid-cols-10 p-2 ${className}`}>
     <div className="col-span-4 flex h-screen flex-col items-center justify-center">
       {children}

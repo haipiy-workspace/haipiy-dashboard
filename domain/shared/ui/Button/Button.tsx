@@ -49,7 +49,7 @@ const buttonStyle = (
   }
 };
 
-const Button = ({
+export const Button = ({
   variant = "primary",
   children,
   className,

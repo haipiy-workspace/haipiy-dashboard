@@ -1,5 +1,3 @@
-import Button from "./Button";
-import TextInput from "./TextInput";
-import Icon from "./Icon";
-
-export { Button, TextInput, Icon };
+export * from "./Button";
+export * from "./TextInput";
+export * from "./Icon";

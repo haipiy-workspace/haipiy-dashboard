@@ -15,7 +15,7 @@ export interface IIconProps {
   className?: string;
 }
 
-const Icon = ({ name = "error", className }: IIconProps) => {
+export const Icon = ({ name = "error", className }: IIconProps) => {
   let IconComponent: ComponentType<{ className?: string }>;
 
   switch (name) {
