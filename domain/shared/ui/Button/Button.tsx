@@ -1,9 +1,9 @@
 import MButton from "@mui/material/Button";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: "primary" | "secondary" | "cancel" | "outline";
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   disabled?: boolean;
   color?:

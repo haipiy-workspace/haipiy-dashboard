@@ -1,7 +1,8 @@
 import { Icon } from "@/domain/shared/ui";
+import { ReactNode } from "react";
 
 interface ILayoutProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
