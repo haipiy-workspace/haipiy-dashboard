@@ -23,27 +23,27 @@ const buttonStyle = (
   switch (variantButton) {
     case "disabled":
       return {
-        style: "bg-gray-500 text-black-100",
+        style: "bg-haip-gray-500 text-haip-black-100",
         variantButton: "contained",
       };
     case "secondary":
       return {
-        style: "bg-primary-400 text-black-100",
+        style: "bg-haip-primary-400 text-haip-black-100",
         variantButton: "contained",
       };
     case "cancel":
       return {
-        style: "bg-red-500 text-black-100",
+        style: "bg-haip-red-500 text-haip-black-100",
         variantButton: "contained",
       };
     case "outline":
       return {
-        style: "text-primary-500",
+        style: "text-haip-primary-500",
         variantButton: "text",
       };
     default:
       return {
-        style: "bg-primary-500 text-black-100",
+        style: "bg-haip-primary-500 text-haip-black-100",
         variantButton: "contained",
       };
   }
@@ -61,7 +61,7 @@ export const Button = ({
   <MButton
     variant={buttonStyle(variant).variantButton}
     disabled={disabled}
-    className={`${disabled ? buttonStyle("disabled").style : buttonStyle(variant).style} h-10 w-[92px] rounded-[10px] text-[15px] font-normal ${className}`}
+    className={`${disabled ? buttonStyle("disabled").style : buttonStyle(variant).style} button-large h-10 rounded-[10px] px-5 py-[10px] ${className}`}
     {...props}
   >
     {children}

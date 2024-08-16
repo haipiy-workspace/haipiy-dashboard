@@ -15,8 +15,10 @@ export interface IIconProps {
   className?: string;
 }
 
+interface IIconPropsWithoutName extends Omit<IIconProps, "name"> {}
+
 export const Icon = ({ name = "error", className }: IIconProps) => {
-  let IconComponent: ComponentType<{ className?: string }>;
+  let IconComponent: ComponentType<IIconPropsWithoutName>;
 
   switch (name) {
     // icon resource

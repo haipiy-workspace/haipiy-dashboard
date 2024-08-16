@@ -56,16 +56,16 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
     ref,
   ) => (
     <div className="flex w-full flex-col gap-2">
-      <p>
+      <label htmlFor={label} className="body-b1">
         {label}
-        {required && <span className="ml-1 text-red-800">*</span>}
-      </p>
+        {required && <span className="ml-1 text-haip-red-800">*</span>}
+      </label>
       <MTextField
         fullWidth
         type={showPassword ? type : "password"}
         InputProps={{
           classes: {
-            input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 ${className}`,
+            input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 body-b1 ${className}`,
             notchedOutline: `rounded-xl ${containerClassName}`,
             root: `${getRootClass(!!iconStart, !!iconEnd)}`,
           },
@@ -85,6 +85,7 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
             root: "ml-0 mt-2",
           },
         }}
+        id={label}
         value={value}
         required={required}
         disabled={disabled}

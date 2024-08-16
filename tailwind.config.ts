@@ -18,7 +18,7 @@ const config: Config = {
     colors: {
       "dark-layout": "#333333",
       "light-layout": "FCFCFC",
-      primary: {
+      "haip-primary": {
         100: "#e6f4ff",
         200: "#bfe4ff",
         300: "#99d3ff",
@@ -29,7 +29,7 @@ const config: Config = {
         800: "#005999",
         900: "#004266",
       },
-      orange: {
+      "haip-orange": {
         100: "#ffeed6",
         200: "#ffe3b9",
         300: "#ffd597",
@@ -40,7 +40,7 @@ const config: Config = {
         800: "#db8d19",
         900: "#c98217",
       },
-      green: {
+      "haip-green": {
         100: "#d8ffe3",
         200: "#b5ffca",
         300: "#a1ffbc",
@@ -51,7 +51,7 @@ const config: Config = {
         800: "#4aa764",
         900: "#3b8a51",
       },
-      red: {
+      "haip-red": {
         100: "#ffe5e5",
         200: "#ffcccc",
         300: "#ff9999",
@@ -62,7 +62,7 @@ const config: Config = {
         800: "#900B09",
         900: "#330000",
       },
-      gray: {
+      "haip-gray": {
         100: "#f5f5f5",
         200: "#e6e6e6",
         300: "#d7d7d7",
@@ -73,7 +73,7 @@ const config: Config = {
         800: "#585858",
         900: "#3d3d3d",
       },
-      yellow: {
+      "haip-yellow": {
         100: "#fffde5",
         200: "#fffbd4",
         300: "#fffaca",
@@ -84,7 +84,7 @@ const config: Config = {
         800: "#d7c952",
         900: "#baad36",
       },
-      black: {
+      "haip-black": {
         100: "#ffffff",
         200: "#efefef",
         300: "#e9e9e9",
