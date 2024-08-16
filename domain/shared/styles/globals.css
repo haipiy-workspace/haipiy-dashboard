@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-size: 16px;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  margin: 0;
+  font-family:
+    "Montserrat",
+    -apple-system,
+    system-ui,
+    blinkmacsystemfont,
+    "Segoe UI",
+    roboto,
+    sans-serif;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer components {
+  .display-superduper-large {
+    @apply text-5xl font-extrabold leading-[3rem] tracking-[1.2px] md:text-[3.5rem] md:leading-[4.13rem];
+  }
+  .display-large {
+    @apply text-3xl font-extrabold leading-[2.75rem] md:text-[3rem] md:leading-[4rem];
+  }
+  .display-small {
+    @apply text-[2rem] font-extrabold leading-[2.75rem] md:text-[2.25rem];
+  }
+  .headline-h0 {
+    @apply text-[1.3rem] leading-[1.5rem] md:text-[1.5rem] md:leading-[1.8rem];
+  }
+  .headline-h1 {
+    @apply text-[1.75rem] font-bold leading-[2.5rem] md:text-[2rem];
+  }
+  .headline-h2 {
+    @apply text-[1.25rem] font-bold leading-[2rem] md:text-[1.5rem];
+  }
+  .title-large {
+    @apply text-[1.125rem] font-bold leading-[1.75rem] md:text-[1.375rem] md:leading-[1.75rem];
+  }
+  .title-semi-medium {
+    @apply text-[1.125rem] font-bold leading-[2rem] tracking-[0.25px];
+  }
+  .title-medium {
+    @apply text-base font-bold tracking-[0.15px];
+  }
+  .title-small {
+    @apply text-[0.875rem] font-bold leading-[1.25rem] tracking-[0.1px];
+  }
+  .body-b1 {
+    @apply text-base font-normal tracking-[0.15px];
+  }
+  .body-b2 {
+    @apply text-[0.875rem] font-normal leading-[1.25rem] tracking-[0.25px];
+  }
+  .body-b3 {
+    @apply text-[0.75rem] font-normal leading-[1rem] tracking-[0.4px];
+  }
+  .label-large {
+    @apply text-[0.875rem] font-medium leading-[1.5rem] tracking-[0.1px];
+  }
+  .label-medium {
+    @apply text-[0.75rem] font-medium leading-[1rem] tracking-[0.5px];
+  }
+  .label-small {
+    @apply text-[0.625rem] font-medium leading-[1rem] tracking-[0.5px];
+  }
+  .button-large {
+    @apply text-[0.875rem] font-bold leading-[1.25rem] tracking-[1.25px];
+  }
+  .button-small {
+    @apply text-[0.75rem] font-medium leading-[1rem] tracking-[1.25px];
+  }
+}

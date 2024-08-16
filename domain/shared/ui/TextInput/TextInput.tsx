@@ -1,8 +1,7 @@
 import MTextField from "@mui/material/TextField";
 import MInputAdornment from "@mui/material/InputAdornment";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
-import MuiIcons from "../MuiIcons";
-import { MuiIconsProps } from "../MuiIcons/MuiIcons";
+import { Icon, IIconProps } from "../Icon";
 
 interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   variant?: "filled" | "standard" | "outlined";
@@ -17,8 +16,8 @@ interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   value?: string;
   required?: boolean;
   showPassword?: boolean;
-  iconStart?: MuiIconsProps["name"];
-  iconEnd?: MuiIconsProps["name"];
+  iconStart?: IIconProps["name"];
+  iconEnd?: IIconProps["name"];
 }
 
 const getRootClass = (startIcon: Boolean, endIcon: Boolean): string => {
@@ -33,7 +32,7 @@ const getInputClass = (startIcon: Boolean, endIcon: Boolean): string => {
   return "px-4";
 };
 
-const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
+export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
   (
     {
       variant = "outlined",
@@ -57,24 +56,27 @@ const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
     ref,
   ) => (
     <div className="flex w-full flex-col gap-2">
-      <span>{label}</span>
+      <label htmlFor={label} className="body-b1">
+        {label}
+        {required && <span className="ml-1 text-haip-red-800">*</span>}
+      </label>
       <MTextField
         fullWidth
         type={showPassword ? type : "password"}
         InputProps={{
           classes: {
-            input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 ${className}`,
+            input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 body-b1 ${className}`,
             notchedOutline: `rounded-xl ${containerClassName}`,
             root: `${getRootClass(!!iconStart, !!iconEnd)}`,
           },
           startAdornment: iconStart ? (
             <MInputAdornment position="start">
-              <MuiIcons name={iconStart} />
+              <Icon name={iconStart} />
             </MInputAdornment>
           ) : null,
           endAdornment: iconEnd ? (
             <MInputAdornment position="end">
-              <MuiIcons name={iconEnd} />
+              <Icon name={iconEnd} />
             </MInputAdornment>
           ) : null,
         }}
@@ -83,6 +85,7 @@ const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
             root: "ml-0 mt-2",
           },
         }}
+        id={label}
         value={value}
         required={required}
         disabled={disabled}
