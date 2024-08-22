@@ -82,7 +82,7 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
         }}
         FormHelperTextProps={{
           classes: {
-            root: "ml-0 mt-2",
+            root: "m-0 h-4",
           },
         }}
         id={label}
@@ -92,7 +92,7 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
         placeholder={placeholder}
         variant={variant}
         error={Boolean(errorMessage)}
-        helperText={errorMessage}
+        helperText={errorMessage || " "}
         inputRef={ref}
         inputProps={{ maxLength: { maxLength }, ...props }}
       />

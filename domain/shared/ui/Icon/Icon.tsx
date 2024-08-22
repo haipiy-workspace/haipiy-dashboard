@@ -30,27 +30,19 @@ export const Icon = ({ name = "error", className }: IIconProps) => {
       break;
     // logo or svg resource
     case "haipiy":
-      IconComponent = lazy(
-        () => import("@/domain/shared/assets/svg/haipiy.svg"),
-      );
+      IconComponent = lazy(() => import("@/domain/shared/assets/svg/haipiy.svg"));
       break;
     case "invte":
-      IconComponent = lazy(
-        () => import("@/domain/shared/assets/svg/invte.svg"),
-      );
+      IconComponent = lazy(() => import("@/domain/shared/assets/svg/invte.svg"));
       break;
     case "mine":
       IconComponent = lazy(() => import("@/domain/shared/assets/svg/mine.svg"));
       break;
     case "shopr":
-      IconComponent = lazy(
-        () => import("@/domain/shared/assets/svg/shopr.svg"),
-      );
+      IconComponent = lazy(() => import("@/domain/shared/assets/svg/shopr.svg"));
       break;
     case "lingoloom":
-      IconComponent = lazy(
-        () => import("@/domain/shared/assets/svg/lingoloom.svg"),
-      );
+      IconComponent = lazy(() => import("@/domain/shared/assets/svg/lingoloom.svg"));
       break;
     default:
       IconComponent = lazy(() => import("@mui/icons-material/Error"));
@@ -58,7 +50,7 @@ export const Icon = ({ name = "error", className }: IIconProps) => {
 
   return (
     // need to add default icon if faild to load
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className={`h-[47px] w-[124px] ${className}`}>Loading...</div>}>
       <IconComponent className={className} />
     </Suspense>
   );
