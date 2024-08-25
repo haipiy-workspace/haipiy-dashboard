@@ -1,7 +1,14 @@
-export interface IApiResponseBaseInterface<T> {
+export interface IApiResponseBase<T> {
   success?: boolean;
-  code?: number;
+  status_code?: number;
   message?: string;
-  error_code?: number;
+  error_code?: number | null;
   data?: T;
+}
+
+export interface IApiResponseBaseData {
+  success?: boolean;
+  statusCode?: number;
+  message?: string;
+  errorCode?: number | null;
 }

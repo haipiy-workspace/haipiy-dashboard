@@ -1,6 +1,6 @@
 import { apiService, CustomApiServiceError } from "@/domain/shared/services";
-import { accountEndpoints } from "../endpoints";
 import { ILoginPayload, ILoginResponse } from "../../interfaces";
+import accountEndpoints from "../endpoints";
 
 export const login = async (payload: ILoginPayload) => {
   try {

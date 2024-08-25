@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import { cookie } from "@/domain/shared/utils";
+import { CustomApiServiceError, IApiResponseBaseData } from "@/domain/shared/services";
 import { ILoginData } from "../interfaces";
 import { login } from "../services/api";
 
@@ -34,7 +36,24 @@ export const useLogin = () => {
         refreshToken: response.data?.refresh_token || "",
         refreshTokenExpiredAt: response.data?.refresh_token_expired_at || "",
       };
-      console.log("data", dataLogin);
+
+      const errorData: IApiResponseBaseData = {
+        statusCode: response.status_code || 0,
+        errorCode: response.error_code || null,
+        message: response.message || "",
+      };
+
+      if (errorData.errorCode === 1001) {
+        setEmailError("oops, email atau password salah.");
+        setPasswordError("oops, email atau password salah.");
+        throw new CustomApiServiceError(
+          `error code ${errorData.errorCode}, status code ${errorData.statusCode}, message ${errorData.message} on useLogin level`,
+          "Error",
+        );
+      }
+
+      cookie.setToken(dataLogin.sessionToken);
+      // console.log("hall salah", response);
     } catch (error) {
       console.log(error);
     }

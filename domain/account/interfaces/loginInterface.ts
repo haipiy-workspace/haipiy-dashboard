@@ -1,4 +1,4 @@
-import { IApiResponseBaseInterface } from "@/domain/shared/services";
+import { IApiResponseBase } from "@/domain/shared/services";
 
 export interface ILoginPayload {
   email: string;
@@ -6,7 +6,7 @@ export interface ILoginPayload {
 }
 
 export interface ILoginResponse
-  extends IApiResponseBaseInterface<{
+  extends IApiResponseBase<{
     session_token: string;
     session_token_expired_at: string;
     refresh_token: string;

@@ -1,4 +1,4 @@
-export const accountEndpoints = {
+const accountEndpoints = {
   login: "api/v1/account/login",
 };
 

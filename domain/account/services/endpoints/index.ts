@@ -1,1 +1,3 @@
-export * from "./endpoints";
+import accountEndpoints from "./endpoints";
+
+export default accountEndpoints;
