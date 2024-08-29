@@ -1,5 +1,8 @@
-import { Icon } from "@/domain/shared/ui";
 import { ReactNode } from "react";
+import LgInvte from "@/domain/shared/assets/svg/invte.svg";
+import LgMine from "@/domain/shared/assets/svg/mine.svg";
+import LgShopr from "@/domain/shared/assets/svg/shopr.svg";
+import LgLingoLoom from "@/domain/shared/assets/svg/lingoloom.svg";
 
 interface ILayoutProps {
   children?: ReactNode;
@@ -30,16 +33,16 @@ export const Layout = ({
       </h1>
       <div className="flexr-row flex gap-2">
         <div className="w-[56px] lg:w-[91px]">
-          <Icon className="h-full w-full" name="invte" />
+          <LgInvte className="h-full w-full" name="invte" />
         </div>
         <div className="w-[57px] lg:w-[91px]">
-          <Icon className="h-full w-full" name="mine" />
+          <LgMine className="h-full w-full" name="mine" />
         </div>
         <div className="w-[77px] pt-2 lg:w-[122px]">
-          <Icon className="h-full w-full" name="shopr" />
+          <LgShopr className="h-full w-full" name="shopr" />
         </div>
         <div className="w-[115px] pt-1 lg:w-[184px] lg:pt-[3px]">
-          <Icon className="h-full w-full" name="lingoloom" />
+          <LgLingoLoom className="h-full w-full" name="lingoloom" />
         </div>
       </div>
     </div>
