@@ -5,6 +5,7 @@ import { CustomApiServiceError } from "@/domain/shared/services";
 import { getBaseData } from "@/domain/shared/mappers";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import dayjs from "dayjs";
 import { login } from "../services/api";
 import { getLoginData } from "../mappers";
 
@@ -43,7 +44,9 @@ export const useLogin = () => {
         );
       }
 
-      cookie.setToken(dataLogin.sessionToken);
+      const cookieExpires = dayjs(dataLogin.sessionTokenExpiredAt).toDate();
+
+      cookie.setToken(dataLogin.sessionToken, cookieExpires);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error);

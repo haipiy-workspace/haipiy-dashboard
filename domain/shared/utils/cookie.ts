@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
-const setToken = (item: string) => {
-  Cookies.set("haipiy_token", item, { expires: 7 });
+const setToken = (item: string, expires: number | Date) => {
+  Cookies.set("haipiy_token", item, { expires });
 };
 
 const getToken = () => Cookies.get("haipiy_token") || "";
