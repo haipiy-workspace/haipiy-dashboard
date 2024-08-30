@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Poppins } from "next/font/google";
+import "@/domain/shared/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./utils/theme";
+import { MuiThemeProvider } from "@/domain/shared/configs";
+import { ReactNode } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  style: "normal",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,13 +19,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}+ </ThemeProvider>
+      <body id="__next" className={poppins.className}>
+        <AppRouterCacheProvider options={{ key: "css" }}>
+          <MuiThemeProvider>{children}</MuiThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

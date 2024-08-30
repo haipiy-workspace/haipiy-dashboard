@@ -11,8 +11,20 @@
       "error",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "react/function-component-definition": [
+      2,
+      {
+        // have to set this rule if want to arrow function, airbnb style prefered regular function over arrow function
+        "namedComponents": ["arrow-function", "function-declaration"], // if we want to use regular and arrow function
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-duplicate-props": "off",
+    "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-uses-react": "off"
+    "react/jsx-uses-react": "off",
+    "no-underscore-dangle": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json"
