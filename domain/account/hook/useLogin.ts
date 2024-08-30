@@ -23,6 +23,7 @@ export const useLogin = () => {
     mode: "onSubmit",
   });
   const { setError } = formMethod;
+
   const handleLogin: SubmitHandler<TFormLogin> = async (data) => {
     try {
       const response = await login({
@@ -48,8 +49,7 @@ export const useLogin = () => {
 
       cookie.setToken(dataLogin.sessionToken, cookieExpires);
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+      console.error(error);
     }
   };
 
