@@ -1,7 +1,6 @@
 import MTextField from "@mui/material/TextField";
 import MInputAdornment from "@mui/material/InputAdornment";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
-import { Icon, IIconProps } from "../Icon";
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from "react";
 
 interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   variant?: "filled" | "standard" | "outlined";
@@ -16,8 +15,8 @@ interface ITextInputProps extends ComponentPropsWithoutRef<"input"> {
   value?: string;
   required?: boolean;
   showPassword?: boolean;
-  iconStart?: IIconProps["name"];
-  iconEnd?: IIconProps["name"];
+  iconStart?: ReactNode;
+  iconEnd?: ReactNode;
 }
 
 const getRootClass = (startIcon: Boolean, endIcon: Boolean): string => {
@@ -49,8 +48,6 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
       required,
       iconStart,
       iconEnd,
-      onChange,
-      onKeyDown,
       ...props
     },
     ref,
@@ -70,31 +67,25 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
             root: `${getRootClass(!!iconStart, !!iconEnd)}`,
           },
           startAdornment: iconStart ? (
-            <MInputAdornment position="start">
-              <Icon name={iconStart} />
-            </MInputAdornment>
+            <MInputAdornment position="start">{iconStart}</MInputAdornment>
           ) : null,
           endAdornment: iconEnd ? (
-            <MInputAdornment position="end">
-              <Icon name={iconEnd} />
-            </MInputAdornment>
+            <MInputAdornment position="end">{iconEnd}</MInputAdornment>
           ) : null,
         }}
         FormHelperTextProps={{
           classes: {
-            root: "ml-0 mt-2",
+            root: "m-0 h-4",
           },
         }}
         id={label}
-        value={value}
-        required={required}
         disabled={disabled}
         placeholder={placeholder}
         variant={variant}
         error={Boolean(errorMessage)}
-        helperText={errorMessage}
+        helperText={errorMessage || " "}
         inputRef={ref}
-        inputProps={{ maxLength: { maxLength }, ...props }}
+        inputProps={{ maxLength, ...props }}
       />
     </div>
   ),
