@@ -1,7 +1,7 @@
 import { Layout, RegisterForm } from "@/domain/account/ui";
 
 const Register = () => (
-  <Layout childrenClassName="top-[630px]">
+  <Layout childrenClassName="h-[120vh]">
     <RegisterForm />
   </Layout>
 );

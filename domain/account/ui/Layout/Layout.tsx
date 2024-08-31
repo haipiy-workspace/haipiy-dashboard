@@ -19,15 +19,13 @@ export const Layout = ({
   bannerClassName,
 }: ILayoutProps) => (
   <div
-    className={`relative flex h-screen flex-col p-[5px] lg:static lg:mb-0 lg:grid lg:grid-cols-10 lg:bg-haip-black-100 lg:p-2 ${mainClassName}`}
+    className={`relative flex h-screen flex-col bg-haip-gray-100 p-[5px] lg:static lg:mb-0 lg:grid lg:grid-cols-10 lg:bg-haip-black-100 lg:p-2 ${mainClassName}`}
   >
     <div
-      className={`absolute left-1/2 top-[520px] flex w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center p-2 lg:static lg:left-auto lg:top-auto lg:col-span-4 lg:h-[98vh] lg:transform-none ${childrenClassName}`}
+      className={`absolute left-0 right-0 flex h-screen w-full flex-col items-center gap-4 p-2 pt-[280px] lg:static lg:h-[98vh] ${childrenClassName}`}
     >
-      <div className="flex w-full flex-col items-center justify-center gap-4">
-        {children}
-        <LgHaipiy className="h-[45.68] w-[124px] self-center" />
-      </div>
+      {children}
+      <LgHaipiy className="h-[45.68] w-[124px] self-center" />
     </div>
     <div
       className={`flex min-h-[454px] flex-col justify-center rounded-2xl bg-login-gradient pl-[17px] lg:col-span-6 lg:pl-[47px] ${bannerClassName}`}
