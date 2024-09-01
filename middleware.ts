@@ -11,6 +11,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
+  // we gonna fix latter about maatcher and conditional
+  // current problemm if we exclude login on matcher it wont cuase any looping, but it will make second condition untouched
+
   return NextResponse.next();
 }
 
@@ -23,6 +26,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|login).*)",
   ],
 };
