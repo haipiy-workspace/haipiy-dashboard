@@ -19,4 +19,4 @@ export const login = async (payload: ILoginPayload) => {
   }
 };
 
-export const register = async () => {};
+export default login;

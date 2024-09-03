@@ -22,7 +22,7 @@ export const Layout = ({
     className={`relative flex h-screen flex-col bg-haip-gray-100 p-[5px] lg:static lg:mb-0 lg:grid lg:grid-cols-10 lg:bg-haip-black-100 lg:p-2 ${mainClassName}`}
   >
     <div
-      className={`absolute left-0 right-0 flex h-screen w-full flex-col items-center justify-center gap-4 p-2 pt-[280px] lg:static lg:col-span-4 lg:h-[98vh] ${childrenClassName}`}
+      className={`absolute left-0 right-0 flex h-auto w-full flex-col items-center gap-4 p-2 pt-[280px] lg:static lg:col-span-4 lg:h-[98vh] lg:justify-center lg:pt-2 ${childrenClassName}`}
     >
       {children}
       <LgHaipiy className="h-[45.68] w-[124px] self-center" />

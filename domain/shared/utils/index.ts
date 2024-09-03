@@ -1,4 +1,4 @@
 import cookie from "./cookie";
+import dataTypeCheck from "./dataTypeCheck";
 
-// eslint-disable-next-line import/prefer-default-export
-export { cookie };
+export { cookie, dataTypeCheck };

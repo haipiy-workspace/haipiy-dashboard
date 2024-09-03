@@ -1,5 +1,5 @@
 import Checkbox from "@mui/material/Checkbox";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from "react";
 
 interface ICheckboxProps extends ComponentPropsWithoutRef<"input"> {
   sizeCheckbox?: "small" | "medium" | "large";
@@ -7,25 +7,29 @@ interface ICheckboxProps extends ComponentPropsWithoutRef<"input"> {
   label?: string;
   children?: ReactNode;
   className?: string;
+  checked?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Checbox = ({
-  sizeCheckbox = "medium",
-  defaultChecked = false,
-  label,
-  children,
-  className,
-  ...props
-}: ICheckboxProps) => (
+export const Checbox = forwardRef<HTMLInputElement, ICheckboxProps>(
+  (
+    { sizeCheckbox = "medium", label, children, className, checked, value, onChange, ...props },
+    ref,
+  ) => (
     <div className="flex flex-row gap-2">
       <Checkbox
         className={className}
-        defaultChecked={defaultChecked}
         size={sizeCheckbox}
+        checked={checked}
+        value={value}
+        onChange={onChange}
+        inputRef={ref}
         inputProps={{ ...props }}
       />
       {children}
     </div>
-  );
+  ),
+);
 
 export default Checbox;
