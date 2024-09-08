@@ -1,19 +1,25 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const protectedRoutes = ["/dashboard/"];
+const publicRoutes = ["/login/", "/register/"];
+
 export function middleware(request: NextRequest) {
   const isLogin = request.cookies.get("haipiy_token")?.value;
-  if (!isLogin) {
+  const path = request.nextUrl.pathname;
+  const isProtectedRoute = protectedRoutes.includes(path);
+  const isPublicRoute = publicRoutes.includes(path);
+
+  if (!isLogin && isProtectedRoute) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (request.nextUrl.pathname.startsWith("/login") && isLogin) {
+  // If the user is logged in and tries to access a public route, redirect to the dashboard
+  if (isLogin && isPublicRoute) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  // we gonna fix latter about maatcher and conditional
-  // current problemm if we exclude login on matcher it wont cuase any looping, but it will make second condition untouched
-
+  // Allow the request to proceed if none of the conditions above are met
   return NextResponse.next();
 }
 
@@ -26,6 +32,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|login).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };
