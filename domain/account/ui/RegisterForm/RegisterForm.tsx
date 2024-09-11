@@ -68,7 +68,7 @@ export const RegisterForm = () => {
           render={({ field }) => (
             <Checkbox
               {...field}
-              value="terms"
+              id="terms"
               checked={!!field.value}
               onChange={(e) => field.onChange(e.target.checked)}
               className="text-haip-primary-500"
