@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Checbox, TextInput } from "@/domain/shared/ui";
+import { Button, Checkbox, TextInput } from "@/domain/shared/ui";
 import { Controller } from "react-hook-form";
 import { useRegister } from "../../hook";
 
@@ -66,22 +66,22 @@ export const RegisterForm = () => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <Checbox
+            <Checkbox
               {...field}
               value="terms"
               checked={!!field.value}
               onChange={(e) => field.onChange(e.target.checked)}
               className="text-haip-primary-500"
-            >
-              <p className="body-b2">
-                Saya mengerti dan setuju dengan{" "}
-                <span className="text-haip-primary-500">Syarat dan Ketentuan</span> serta{" "}
-                <span className="text-haip-primary-500">Kebijakan Privasi.</span>
-              </p>
-            </Checbox>
+              label={
+                <p className="body-b2">
+                  Saya mengerti dan setuju dengan{" "}
+                  <span className="text-haip-primary-500">Syarat dan Ketentuan</span> serta{" "}
+                  <span className="text-haip-primary-500">Kebijakan Privasi.</span>
+                </p>
+              }
+            />
           )}
         />
-
         <Button className="mt-4 w-full" type="submit" disabled={!isValid}>
           Daftar
         </Button>

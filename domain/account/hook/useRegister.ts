@@ -8,16 +8,16 @@ import { registerAccount } from "../services/api";
 export const registerSchema = z
   .object({
     email: z.string().email(),
-    name: z.string().min(3),
-    username: z.string().min(20),
-    password: z.string().min(3),
-    confirmPassword: z.string().min(3),
+    name: z.string().min(1, { message: "Wajib diisi" }),
+    username: z.string().min(1, { message: "Wajib diisi" }),
+    password: z.string().min(1, { message: "Wajib diisi" }),
+    confirmPassword: z.string().min(1, { message: "Wajib diisi" }),
     terms: z.boolean().refine((value) => value === true, {
-      message: "You must agree to the terms.",
+      message: "Wajib dipilih.",
     }),
   })
   .refine((data) => data.confirmPassword === data.password, {
-    message: "Passwords don't match",
+    message: "Password tidak sama",
     path: ["confirmPassword"],
   });
 
