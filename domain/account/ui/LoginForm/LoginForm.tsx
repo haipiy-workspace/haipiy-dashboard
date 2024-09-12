@@ -3,6 +3,7 @@
 import { Button, TextInput } from "@/domain/shared/ui";
 import { useLogin } from "@/domain/account/hook";
 import IcVisibility from "@mui/icons-material/Visibility";
+import Link from "next/link";
 
 export const LoginForm = () => {
   const { handleLogin, formMethod, isShowPassword, setIsShowPassword } = useLogin();
@@ -44,9 +45,11 @@ export const LoginForm = () => {
           Login
         </Button>
       </form>
-      <Button className="w-full" variant="outline">
-        Register
-      </Button>
+      <Link href="/register">
+        <Button className="w-full" variant="outline">
+          Register
+        </Button>
+      </Link>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { dataTypeCheck } from "../utils";
+
 export class CustomApiServiceError extends Error {
   constructor(message: string, name: string) {
     super(message);
@@ -17,12 +19,17 @@ export const apiService = async <ResponseType>(
   const timeoutId = setTimeout(() => controller.abort(), timeout);
 
   try {
+    const headers =
+      options?.headers instanceof Headers ? options.headers : new Headers(options?.headers || {});
+
+    // Only set Content-Type to application/json if it's not already set and if data type is json
+    if (!headers.has("Content-Type") && dataTypeCheck.isJson(options?.body)) {
+      headers.set("Content-Type", "application/json");
+    }
     const response = await fetch(`${baseUrl}${endpoint}`, {
       signal,
-      headers: {
-        "Content-Type": "application/json",
-      },
       ...options,
+      headers,
     });
 
     clearTimeout(timeoutId);
