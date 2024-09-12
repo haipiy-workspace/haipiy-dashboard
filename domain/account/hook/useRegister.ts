@@ -29,7 +29,7 @@ export const useRegister = () => {
       terms: false,
     },
     resolver: zodResolver(registerSchema),
-    mode: "onBlur",
+    mode: "onChange",
   });
   const { control } = formMethod;
 
