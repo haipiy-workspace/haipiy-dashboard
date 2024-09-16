@@ -38,10 +38,10 @@ export const apiService = async <ResponseType>(
     return data;
   } catch (error: unknown) {
     if (error instanceof Error) {
-      throw new CustomApiServiceError(`${error.message}, on apiService.ts level`, error.name);
+      throw new CustomApiServiceError(`${error.message}, on apiService function`, error.name);
     }
     throw new CustomApiServiceError(
-      "Unknown error occurred on apiService.ts level",
+      "Unknown error occurred on apiService function",
       "UnknownError",
     );
   }

@@ -13,9 +13,9 @@ export const login = async (payload: ILoginPayload) => {
     return response;
   } catch (error: unknown) {
     if (error instanceof Error) {
-      throw new CustomApiServiceError(`${error.message}, on loginApi.ts level`, error.name);
+      throw new CustomApiServiceError(`${error.message}, on login function`, error.name);
     }
-    throw new CustomApiServiceError("Unknown error occurred on loginApi.ts level", "UnknownError");
+    throw new CustomApiServiceError("Unknown error occurred on login function", "UnknownError");
   }
 };
 

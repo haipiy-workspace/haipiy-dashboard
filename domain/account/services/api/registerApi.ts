@@ -18,10 +18,10 @@ export const registerAccount = async (payload: IRegisterPayload) => {
     return response;
   } catch (error: unknown) {
     if (error instanceof Error) {
-      throw new CustomApiServiceError(`${error.message}, on registerApi.ts level`, error.name);
+      throw new CustomApiServiceError(`${error.message}, on registerAccount function`, error.name);
     }
     throw new CustomApiServiceError(
-      "Unknown error occurred on registerApi.ts level",
+      "Unknown error occurred on registerAccount function",
       "UnknownError",
     );
   }

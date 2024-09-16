@@ -41,15 +41,16 @@ export const LoginForm = () => {
             />
           }
         />
-        <Button className="mt-4 w-full" type="submit">
+        <Button className="button-large mt-4 w-full" type="submit">
           Login
         </Button>
       </form>
-      <Link href="/register">
-        <Button className="w-full" variant="outline">
+
+      <Button className="w-full" variant="outline">
+        <Link href="/register" className="button-large text-haip-primary-500 no-underline">
           Register
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </div>
   );
 };

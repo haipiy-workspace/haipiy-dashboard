@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { getBaseData } from "@/domain/shared/mappers";
 import { CustomApiServiceError } from "@/domain/shared/services";
+import { useRouter } from "next/navigation";
 import { registerAccount } from "../services/api";
 
 export const registerSchema = z
@@ -24,6 +25,8 @@ export const registerSchema = z
 export type TFormRegister = z.infer<typeof registerSchema>;
 
 export const useRegister = () => {
+  const router = useRouter();
+
   const formMethod = useForm<TFormRegister>({
     defaultValues: {
       terms: false,
@@ -50,6 +53,8 @@ export const useRegister = () => {
           "Error",
         );
       }
+
+      router.push(`/verify?email=${data.email}`);
     } catch (error) {
       console.error(error);
     }
