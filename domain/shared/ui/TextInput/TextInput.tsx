@@ -60,24 +60,6 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
       <MTextField
         fullWidth
         type={showPassword ? type : "password"}
-        InputProps={{
-          classes: {
-            input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 body-b1 ${className}`,
-            notchedOutline: `rounded-xl ${containerClassName}`,
-            root: `${getRootClass(!!iconStart, !!iconEnd)}`,
-          },
-          startAdornment: iconStart ? (
-            <MInputAdornment position="start">{iconStart}</MInputAdornment>
-          ) : null,
-          endAdornment: iconEnd ? (
-            <MInputAdornment position="end">{iconEnd}</MInputAdornment>
-          ) : null,
-        }}
-        FormHelperTextProps={{
-          classes: {
-            root: "m-0 h-4",
-          },
-        }}
         id={label}
         disabled={disabled}
         placeholder={placeholder}
@@ -85,7 +67,30 @@ export const TextInput = forwardRef<HTMLInputElement, ITextInputProps>(
         error={Boolean(errorMessage)}
         helperText={errorMessage || " "}
         inputRef={ref}
-        inputProps={{ maxLength, ...props }}
+        slotProps={{
+          input: {
+            classes: {
+              input: `${getInputClass(!!iconStart, !!iconEnd)} py-3 body-b1 ${className}`,
+              notchedOutline: `rounded-xl ${containerClassName}`,
+              root: `${getRootClass(!!iconStart, !!iconEnd)}`,
+            },
+            startAdornment: iconStart ? (
+              <MInputAdornment position="start">{iconStart}</MInputAdornment>
+            ) : null,
+            endAdornment: iconEnd ? (
+              <MInputAdornment position="end">{iconEnd}</MInputAdornment>
+            ) : null,
+          },
+          formHelperText: {
+            classes: {
+              root: "m-0 h-4",
+            },
+          },
+          htmlInput: {
+            maxLength,
+            ...props,
+          },
+        }}
       />
     </div>
   ),
