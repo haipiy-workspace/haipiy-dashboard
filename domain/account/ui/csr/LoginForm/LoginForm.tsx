@@ -45,12 +45,11 @@ export const LoginForm = () => {
           Login
         </Button>
       </form>
-
-      <Button className="w-full" variant="outline">
-        <Link href="/register" className="button-large text-haip-primary-500 no-underline">
+      <Link href="/register" className="w-full">
+        <Button className="w-full" variant="outline">
           Register
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </div>
   );
 };

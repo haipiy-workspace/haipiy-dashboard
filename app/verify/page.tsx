@@ -1,7 +1,8 @@
 import { ICheckVerificationData } from "@/domain/account/interfaces";
 import { getCheckVerificationtData } from "@/domain/account/mappers";
 import { checkVerificationAccount } from "@/domain/account/services/api";
-import { Layout, VerifyAccount } from "@/domain/account/ui";
+import { VerifyAccount } from "@/domain/account/ui/csr";
+import { Layout } from "@/domain/account/ui/ssr";
 import { getBaseData } from "@/domain/shared/mappers";
 import { CustomApiServiceError } from "@/domain/shared/services";
 import { notFound } from "next/navigation";

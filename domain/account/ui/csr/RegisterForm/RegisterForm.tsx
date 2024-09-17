@@ -1,8 +1,8 @@
 "use client";
 
+import { useRegister } from "@/domain/account/hook";
 import { Button, Checkbox, TextInput } from "@/domain/shared/ui";
 import { Controller } from "react-hook-form";
-import { useRegister } from "../../hook";
 
 export const RegisterForm = () => {
   const { handleRegisterAccount, formMethod, control } = useRegister();
@@ -82,7 +82,6 @@ export const RegisterForm = () => {
             />
           )}
         />
-
         <Button className="button-large mt-4 w-full" type="submit" disabled={!isValid}>
           Daftar
         </Button>

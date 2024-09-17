@@ -21,11 +21,11 @@ export const VerifyAccount = ({ resendTimeout }: { resendTimeout: string }) => {
         Periksa email kamu ya! Kami sudah kirim link verifikasi. Kalau nggak ada di kotak masuk,
         coba cek folder spam atau promosi juga.
       </p>
-      <Button className="mb-3 w-full" type="submit">
-        <Link href="/login" className="button-large text-haip-black-100 no-underline">
+      <Link href="/login" className="w-full">
+        <Button className="mb-3 w-full" type="submit">
           Kembali ke halaman masuk
-        </Link>
-      </Button>
+        </Button>
+      </Link>
       <Button
         disabled={!!(seconds !== 0)}
         onClick={handleResendEmail}

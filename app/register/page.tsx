@@ -1,4 +1,5 @@
-import { Layout, RegisterForm } from "@/domain/account/ui";
+import { RegisterForm } from "@/domain/account/ui/csr";
+import { Layout } from "@/domain/account/ui/ssr";
 
 const Register = () => (
   <Layout childrenClassName="h-[120vh]">

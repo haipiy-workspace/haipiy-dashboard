@@ -6,14 +6,7 @@ interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
-  color?:
-    | "error"
-    | "primary"
-    | "secondary"
-    | "info"
-    | "success"
-    | "warning"
-    | "inherit";
+  color?: "error" | "primary" | "secondary" | "info" | "success" | "warning" | "inherit";
   size?: "small" | "medium" | "large";
 }
 
