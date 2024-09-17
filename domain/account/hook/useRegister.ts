@@ -4,6 +4,8 @@ import { z } from "zod";
 import { getBaseData } from "@/domain/shared/mappers";
 import { CustomApiServiceError } from "@/domain/shared/services";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { registerAccount } from "../services/api";
 
 export const registerSchema = z
@@ -26,6 +28,7 @@ export type TFormRegister = z.infer<typeof registerSchema>;
 
 export const useRegister = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const formMethod = useForm<TFormRegister>({
     defaultValues: {
@@ -38,6 +41,7 @@ export const useRegister = () => {
 
   const handleRegisterAccount: SubmitHandler<TFormRegister> = async (data) => {
     try {
+      setIsLoading(true);
       const response = await registerAccount({
         email: data.email,
         full_name: data.name,
@@ -48,17 +52,26 @@ export const useRegister = () => {
       const baseData = getBaseData(response);
 
       if (baseData.statusCode !== 200) {
+        if (baseData.message?.includes("email or username already used")) {
+          toast.error("email or username already used");
+        }
+
         throw new CustomApiServiceError(
           `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on useRegister level`,
           "Error",
         );
       }
 
+      toast.success("berhasil membuat akun");
+
       router.push(`/verify?email=${data.email}`);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return { handleRegisterAccount, formMethod, control };
+  return { handleRegisterAccount, formMethod, control, isLoading };
 };

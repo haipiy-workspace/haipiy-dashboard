@@ -5,7 +5,7 @@ import { Button, Checkbox, TextInput } from "@/domain/shared/ui";
 import { Controller } from "react-hook-form";
 
 export const RegisterForm = () => {
-  const { handleRegisterAccount, formMethod, control } = useRegister();
+  const { handleRegisterAccount, formMethod, control, isLoading } = useRegister();
   const {
     handleSubmit,
     register,
@@ -82,7 +82,12 @@ export const RegisterForm = () => {
             />
           )}
         />
-        <Button className="button-large mt-4 w-full" type="submit" disabled={!isValid}>
+        <Button
+          className="button-large mt-4 w-full"
+          type="submit"
+          disabled={!isValid || isLoading}
+          loading={isLoading}
+        >
           Daftar
         </Button>
       </form>
