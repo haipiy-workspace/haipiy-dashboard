@@ -1,6 +1,6 @@
-import { apiService, CustomApiServiceError, IApiResponseBase } from "@/domain/shared/services";
+import { apiService, CustomApiServiceError } from "@/domain/shared/services";
 import accountEndpoints from "../endpoints";
-import { ICheckVerificationResponse } from "../../interfaces";
+import { ICheckVerificationResponse, IResendEmailnVerificationResponse } from "../../interfaces";
 
 export const checkVerificationAccount = async (email: string) => {
   try {
@@ -24,14 +24,17 @@ export const checkVerificationAccount = async (email: string) => {
   }
 };
 
-export const resendVerificationAccount = async (payload: any) => {
+export const resendEmailVerification = async (email: string) => {
   try {
-    const response = await apiService<IApiResponseBase<null>>(accountEndpoints.resendVerification, {
-      method: "POST",
-      body: JSON.stringify({
-        ...payload,
-      }),
-    });
+    const response = await apiService<IResendEmailnVerificationResponse>(
+      accountEndpoints.resendVerification,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+        }),
+      },
+    );
 
     return response;
   } catch (error: unknown) {

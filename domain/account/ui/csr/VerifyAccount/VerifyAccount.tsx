@@ -1,18 +1,19 @@
 "use client";
 
+import { useVerify } from "@/domain/account/hook";
 import LgVerifyCheck from "@/domain/shared/assets/svg/verify-check.svg";
-import { useCountdown } from "@/domain/shared/hooks";
 import { Button } from "@/domain/shared/ui";
 import Link from "next/link";
 
-export const VerifyAccount = ({ resendTimeout }: { resendTimeout: string }) => {
-  const { seconds } = useCountdown(resendTimeout);
+export const VerifyAccount = ({
+  resendTimeout,
+  email,
+}: {
+  resendTimeout: string;
+  email: string;
+}) => {
+  const { handleResendEmail, seconds } = useVerify(resendTimeout);
 
-  const handleResendEmail = async () => {
-    console.log("hello");
-    // try {
-    // } catch (error) {}
-  };
   return (
     <div className="flex max-w-[412px] flex-col items-center justify-center rounded-[10px] bg-haip-black-100 p-[15px] text-haip-black-800">
       <h2 className="display-small mb-4 font-normal">Verifikasi Akunmu!</h2>
@@ -28,7 +29,7 @@ export const VerifyAccount = ({ resendTimeout }: { resendTimeout: string }) => {
       </Link>
       <Button
         disabled={!!(seconds !== 0)}
-        onClick={handleResendEmail}
+        onClick={() => handleResendEmail(email)}
         className="button-large w-full tracking-normal"
         variant="outline"
         suppressHydrationWarning

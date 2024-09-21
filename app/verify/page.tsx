@@ -31,7 +31,7 @@ const Verify = async ({ searchParams }: { searchParams: { email: string } }) => 
 
   return (
     <Layout childrenClassName="h-[120vh]">
-      <VerifyAccount resendTimeout={checkVerificationData.resendTimeout} />
+      <VerifyAccount resendTimeout={checkVerificationData.resendTimeout} email={email} />
     </Layout>
   );
 };

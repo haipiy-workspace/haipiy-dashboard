@@ -4,6 +4,7 @@ import "@/domain/shared/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { MuiThemeProvider } from "@/domain/shared/configs";
 import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
@@ -25,7 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body id="__next" className={poppins.className}>
         <AppRouterCacheProvider options={{ key: "css", prepend: true }}>
-          <MuiThemeProvider>{children}</MuiThemeProvider>
+          <MuiThemeProvider>
+            <Toaster />
+            {children}
+          </MuiThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
