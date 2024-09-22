@@ -1,6 +1,6 @@
 "use client";
 
-import { useVerify } from "@/domain/account/hook";
+import { useResendEmail } from "@/domain/account/hook";
 import LgVerifyCheck from "@/domain/shared/assets/svg/verify-check.svg";
 import { Button } from "@/domain/shared/ui";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export const VerifyAccount = ({
   resendTimeout: string;
   email: string;
 }) => {
-  const { handleResendEmail, seconds } = useVerify(resendTimeout);
+  const { handleResendEmail, seconds } = useResendEmail(resendTimeout);
 
   return (
     <div className="flex max-w-[412px] flex-col items-center justify-center rounded-[10px] bg-haip-black-100 p-[15px] text-haip-black-800">

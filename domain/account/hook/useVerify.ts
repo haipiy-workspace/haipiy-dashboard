@@ -1,38 +1,38 @@
+import { useEffect } from "react";
 import { getBaseData } from "@/domain/shared/mappers";
+import toast from "react-hot-toast";
 import { CustomApiServiceError } from "@/domain/shared/services";
-import { notFound } from "next/navigation";
-import { useState } from "react";
-import { useCountdown } from "@/domain/shared/hooks";
-import { resendEmailVerification } from "../services/api";
-import { getResendEmailVerificationData } from "../mappers";
+import { verifyAccount } from "../services/api";
 
-export const useVerify = (resendTimeout: string) => {
-  const [timeout, setTimeout] = useState(resendTimeout);
-  const { seconds } = useCountdown(timeout);
-
-  const handleResendEmail = async (email: string) => {
+export const useVerify = (token?: string) => {
+  const handleVerifyAccount = async (verifyToken: string) => {
     try {
-      const response = await resendEmailVerification(email);
+      const response = await verifyAccount(verifyToken);
 
       const baseData = getBaseData(response);
-      const resendEmailVerificationData = getResendEmailVerificationData(response);
 
-      setTimeout(resendEmailVerificationData.resendTimeout);
-
-      if (baseData.statusCode !== 200) {
-        throw new CustomApiServiceError(
-          `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on handleResendVerification function`,
-          "Error",
-        );
+      if (baseData.statusCode === 200) {
+        return toast.success("berhasil konfirmasi email kamu!");
       }
-      // notFound();
+
+      if (baseData.statusCode === 403) {
+        return toast.error("akun sudah terverifikasi");
+      }
+
+      throw new CustomApiServiceError(
+        `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on VerifyAccount component`,
+        "Error",
+      );
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
-      notFound();
+      return toast.error("gagal melakukan verifikasi, token tidak valid");
     }
   };
 
-  return { handleResendEmail, seconds };
+  useEffect(() => {
+    if (token) handleVerifyAccount(token);
+  }, [token]);
 };
 
 export default useVerify;
