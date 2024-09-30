@@ -1,32 +1,23 @@
 import { useEffect } from "react";
-import { getBaseData } from "@/domain/shared/mappers";
 import toast from "react-hot-toast";
-import { CustomApiServiceError } from "@/domain/shared/services";
+import { ApiServiceError } from "@/domain/shared/services/apiServiceError";
 import { verifyAccount } from "../services/api";
 
 export const useVerify = (token?: string) => {
   const handleVerifyAccount = async (verifyToken: string) => {
     try {
-      const response = await verifyAccount(verifyToken);
-
-      const baseData = getBaseData(response);
-
-      if (baseData.statusCode === 200) {
-        return toast.success("berhasil konfirmasi email kamu!");
-      }
-
-      if (baseData.statusCode === 403) {
-        return toast.error("akun sudah terverifikasi");
-      }
-
-      throw new CustomApiServiceError(
-        `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on VerifyAccount component`,
-        "Error",
-      );
+      await verifyAccount(verifyToken);
+      toast.success("berhasil konfirmasi email kamu!");
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-      return toast.error("gagal melakukan verifikasi, token tidak valid");
+      if (!(error instanceof ApiServiceError)) return;
+
+      if (error.data?.errorCode === 1004) {
+        toast.error("akun sudah terverifikasi");
+      }
+
+      if (error.data?.errorCode === 1002) {
+        toast.error("token tidak ditemukan");
+      }
     }
   };
 

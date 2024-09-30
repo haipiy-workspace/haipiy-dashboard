@@ -1,11 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { getBaseData } from "@/domain/shared/mappers";
-import { CustomApiServiceError } from "@/domain/shared/services";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { ApiServiceError } from "@/domain/shared/services/apiServiceError";
 import { registerAccount } from "../services/api";
 
 export const registerSchema = z
@@ -42,32 +41,23 @@ export const useRegister = () => {
   const handleRegisterAccount: SubmitHandler<TFormRegister> = async (data) => {
     try {
       setIsLoading(true);
-      const response = await registerAccount({
+
+      await registerAccount({
         email: data.email,
         full_name: data.name,
         user_name: data.username,
         password: data.password,
       });
 
-      const baseData = getBaseData(response);
-
-      if (baseData.statusCode !== 200) {
-        if (baseData.message?.includes("email or username already used")) {
-          toast.error("email or username already used");
-        }
-
-        throw new CustomApiServiceError(
-          `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on useRegister level`,
-          "Error",
-        );
-      }
-
       toast.success("berhasil membuat akun");
 
       router.push(`/verify?email=${data.email}`);
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      if (!(error instanceof ApiServiceError)) return;
+
+      if (error.data?.message?.includes("email or username already used")) {
+        toast.error("email or username already used");
+      }
     } finally {
       setIsLoading(false);
     }
