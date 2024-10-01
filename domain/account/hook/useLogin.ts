@@ -17,6 +17,7 @@ export type TFormLogin = z.infer<typeof loginSchema>;
 
 export const useLogin = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const formMethod = useForm<TFormLogin>({
     resolver: zodResolver(loginSchema),
     mode: "onSubmit",
@@ -25,6 +26,8 @@ export const useLogin = () => {
 
   const handleLogin: SubmitHandler<TFormLogin> = async (data) => {
     try {
+      setLoading(true);
+
       const response = await login({
         email: data.email,
         password: data.password,
@@ -43,10 +46,12 @@ export const useLogin = () => {
           message: "oops, email atau password salah.",
         });
       }
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { handleLogin, formMethod, isShowPassword, setIsShowPassword };
+  return { handleLogin, formMethod, isShowPassword, setIsShowPassword, loading };
 };
 
 export default useLogin;

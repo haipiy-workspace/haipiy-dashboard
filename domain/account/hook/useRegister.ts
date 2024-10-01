@@ -27,7 +27,7 @@ export type TFormRegister = z.infer<typeof registerSchema>;
 
 export const useRegister = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const formMethod = useForm<TFormRegister>({
     defaultValues: {
@@ -40,7 +40,7 @@ export const useRegister = () => {
 
   const handleRegisterAccount: SubmitHandler<TFormRegister> = async (data) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
 
       await registerAccount({
         email: data.email,
@@ -59,9 +59,9 @@ export const useRegister = () => {
         toast.error("email or username already used");
       }
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  return { handleRegisterAccount, formMethod, control, isLoading };
+  return { handleRegisterAccount, formMethod, control, loading };
 };

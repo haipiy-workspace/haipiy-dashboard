@@ -1,4 +1,5 @@
 import MLoadingButton from "@mui/lab/LoadingButton";
+import MCircularProgress from "@mui/material/CircularProgress";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
@@ -60,6 +61,9 @@ export const Button = ({
     classes={{
       loading: "text-haip-black-100",
     }}
+    loadingIndicator={
+      <MCircularProgress className="text-haip-black-100" thickness={10} size={16} />
+    }
     className={`${disabled ? buttonStyle("disabled").style : buttonStyle(variant).style} button-large h-10 rounded-[10px] px-5 py-[10px] ${className}`}
     {...props}
   >

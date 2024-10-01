@@ -6,7 +6,7 @@ import IcVisibility from "@mui/icons-material/Visibility";
 import Link from "next/link";
 
 export const LoginForm = () => {
-  const { handleLogin, formMethod, isShowPassword, setIsShowPassword } = useLogin();
+  const { handleLogin, formMethod, isShowPassword, setIsShowPassword, loading } = useLogin();
   const {
     handleSubmit,
     register,
@@ -41,7 +41,7 @@ export const LoginForm = () => {
             />
           }
         />
-        <Button className="button-large mt-4 w-full" type="submit">
+        <Button className="button-large mt-4 w-full" type="submit" loading={loading}>
           Login
         </Button>
       </form>
