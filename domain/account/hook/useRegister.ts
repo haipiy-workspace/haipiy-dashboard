@@ -1,8 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { getBaseData } from "@/domain/shared/mappers";
-import { CustomApiServiceError } from "@/domain/shared/services";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { ApiServiceError } from "@/domain/shared/services/apiServiceError";
 import { registerAccount } from "../services/api";
 
 export const registerSchema = z
@@ -24,6 +26,9 @@ export const registerSchema = z
 export type TFormRegister = z.infer<typeof registerSchema>;
 
 export const useRegister = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
   const formMethod = useForm<TFormRegister>({
     defaultValues: {
       terms: false,
@@ -35,25 +40,28 @@ export const useRegister = () => {
 
   const handleRegisterAccount: SubmitHandler<TFormRegister> = async (data) => {
     try {
-      const response = await registerAccount({
+      setLoading(true);
+
+      await registerAccount({
         email: data.email,
         full_name: data.name,
         user_name: data.username,
         password: data.password,
       });
 
-      const baseData = getBaseData(response);
+      toast.success("berhasil membuat akun");
 
-      if (baseData.statusCode !== 200) {
-        throw new CustomApiServiceError(
-          `error code ${baseData.errorCode}, status code ${baseData.statusCode}, message ${baseData.message} on useRegister level`,
-          "Error",
-        );
-      }
+      router.push(`/verify?email=${data.email}`);
     } catch (error) {
-      console.error(error);
+      if (!(error instanceof ApiServiceError)) return;
+
+      if (error.data?.message?.includes("email or username already used")) {
+        toast.error("email or username already used");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { handleRegisterAccount, formMethod, control };
+  return { handleRegisterAccount, formMethod, control, loading };
 };

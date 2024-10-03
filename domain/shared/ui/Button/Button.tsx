@@ -1,4 +1,5 @@
-import MButton from "@mui/material/Button";
+import MLoadingButton from "@mui/lab/LoadingButton";
+import MCircularProgress from "@mui/material/CircularProgress";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
@@ -6,14 +7,8 @@ interface IButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
-  color?:
-    | "error"
-    | "primary"
-    | "secondary"
-    | "info"
-    | "success"
-    | "warning"
-    | "inherit";
+  loading?: boolean;
+  color?: "error" | "primary" | "secondary" | "info" | "success" | "warning" | "inherit";
   size?: "small" | "medium" | "large";
 }
 
@@ -56,16 +51,24 @@ export const Button = ({
   disabled,
   color,
   size,
+  loading,
   ...props
 }: IButtonProps) => (
-  <MButton
+  <MLoadingButton
     variant={buttonStyle(variant).variantButton}
     disabled={disabled}
+    loading={loading}
+    classes={{
+      loading: "text-haip-black-100",
+    }}
+    loadingIndicator={
+      <MCircularProgress className="text-haip-black-100" thickness={10} size={16} />
+    }
     className={`${disabled ? buttonStyle("disabled").style : buttonStyle(variant).style} button-large h-10 rounded-[10px] px-5 py-[10px] ${className}`}
     {...props}
   >
-    {children}
-  </MButton>
+    {!loading && children}
+  </MLoadingButton>
 );
 
 export default Button;

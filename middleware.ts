@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const protectedRoutes = ["/dashboard/"];
-const publicRoutes = ["/login/", "/register/"];
+// const protectedRoutes = ["/dashboard"];
+const publicRoutes = ["/login", "/register", "/verify"];
 
 export function middleware(request: NextRequest) {
   const isLogin = request.cookies.get("haipiy_token")?.value;
   const path = request.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.includes(path);
+  // const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
-  if (!isLogin && isProtectedRoute) {
+  if (!isLogin && !isPublicRoute) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
